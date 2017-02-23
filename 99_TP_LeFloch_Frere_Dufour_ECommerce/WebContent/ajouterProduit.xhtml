@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Ajouter produit</title>
+
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<p:breadCrumb>
+			<p:menuitem value="Ajouter Produit" url="ajouterProduit.xhtml" />
+			<p:menuitem value="Ajouter Produit" url="ajouterProduit.xhtml" />
+			<p:menuitem value="Supprimer Produit" url="supprimerProduit.xhtml" />
+			<p:menuitem value="Liste Produits"
+				url="afficherTousLesProduits.xhtml" />
+			<p:menuitem value="Consulter" url="consulterProduitAdmin.xhtml" />
+			<p:menuitem value="Modifier Produit" url="modifierProduit.xhtml" />
+			<p:menuitem value="Deconnection" url="accueil.xhtml" />
+		</p:breadCrumb>
+	</h:form>
+	<p:separator></p:separator>
+	<p:spacer height="20"></p:spacer>
+
+
+
+	<div align="center">
+		<h:form>
+			<h:panelGrid column="3">
+
+				<h:outputText value="Designation" />
+				<p:inputText label="Designation"
+					value="#{adminManagedBean.produit.designation}" id="designationId">
+					
+				</p:inputText>
+
+				<h:outputText value="Description" />
+				<p:inputText label="Description"
+					value="#{adminManagedBean.produit.description}" id="descriptionId">
+					
+				</p:inputText>
+
+				<h:outputText value="Prix" />
+				<p:inputText label="Prix" value="#{adminManagedBean.produit.prix}"
+					id="prixId">
+					
+				</p:inputText>
+
+				<h:outputText value="Quantite" />
+				<p:inputText label="Quantite"
+					value="#{adminManagedBean.produit.quantite}" id="quantiteId">
+					</p:inputText>
+
+
+				<h:outputText value="Categorie" />
+
+				<p:selectOneMenu value="#{adminManagedBean.nomCategorie}" id="categorieId" >
+				<f:selectItems value="#{adminManagedBean.listeNomCategorie}" />
+  				 </p:selectOneMenu>
+					<h:message for="categorieId" />
+					
+					
+
+			</h:panelGrid>
+
+			<h:commandButton value="
+						Ajouter Produit"
+				action="#{adminManagedBean.ajouterProduit}" />
+		</h:form>
+	</div>
+
+</h:body>
+</html>
