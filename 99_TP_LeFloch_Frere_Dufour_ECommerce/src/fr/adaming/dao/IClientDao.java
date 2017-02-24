@@ -54,13 +54,14 @@ public interface IClientDao {
 	 */
 	public List<Produit> getAllProduitSelectionne();
 	
+	
 	/**
 	 * Methode pour ajouter un produit au panier (en specifiant la quantite)
-	 * @param designation_produit
+	 * @param produit
 	 * @param quantite
 	 * @return le produit qu'on ajouter au panier
 	 */
-	public Produit ajouterProduitPanierByName(String designation_produit, int quantite);
+	public Produit ajouterProduitPanierByName(Produit produit, int quantite);
 	
 	
 	 

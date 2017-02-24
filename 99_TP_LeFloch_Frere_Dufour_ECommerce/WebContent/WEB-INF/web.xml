@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>99_TP_LeFloch_Frere_Dufour_ECommerce_New</display-name>
+  <display-name>99_TP_LeFloch_Frere_Dufour_ECommerce</display-name>
   <welcome-file-list>
     <welcome-file>login.xhtml</welcome-file>
   </welcome-file-list>

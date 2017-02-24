@@ -63,7 +63,7 @@ public class ClientDaoImpl implements IClientDao {
 	}
 
 	@Override
-	public Produit ajouterProduitPanierByName(String nom_produit, int quantite) {
+	public Produit ajouterProduitPanierByName(Produit produit, int quantite) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -47,11 +47,11 @@ public interface IClientService {
 	
 	/**
 	 * Methode pour ajouter un produit au panier (en specifiant la quantite)
-	 * @param designation_produit
+	 * @param produit
 	 * @param quantite
 	 * @return le produit qu'on ajouter au panier
 	 */
-	public Produit ajouterProduitPanierByNameService(String designation_produit, int quantite);
+	public Produit ajouterProduitPanierByNameService(Produit produit, int quantite);
 	
 	
 	/**

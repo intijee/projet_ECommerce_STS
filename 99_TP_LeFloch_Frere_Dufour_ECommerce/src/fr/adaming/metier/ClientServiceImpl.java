@@ -42,7 +42,7 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	@Override
-	public Produit ajouterProduitPanierByNameService(String designation_produit,int quantite) {
+	public Produit ajouterProduitPanierByNameService(Produit produit,int quantite) {
 		// TODO Auto-generated method stub
 		return null;
 	}
