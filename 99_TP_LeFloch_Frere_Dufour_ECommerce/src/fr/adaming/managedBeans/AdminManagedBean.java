@@ -61,6 +61,9 @@ public class AdminManagedBean implements Serializable {
 	// Boolean pour afficher le tableau uniquement la recherche effectuée dans
 	// les méthodes chercher
 	private boolean rendu;
+	
+	//récupére l'id du produit
+	private int id_produit;
 
 	// Constructeur vide
 	public AdminManagedBean() {
@@ -68,6 +71,8 @@ public class AdminManagedBean implements Serializable {
 		this.admin = new Admin();
 		this.produit = new Produit();
 		this.categorie = new Categorie();
+		this.id_produit= new Produit().getId();
+		
 	}
 
 	// Getter et setter
@@ -258,5 +263,45 @@ public class AdminManagedBean implements Serializable {
 		this.rendu = true;
 		
 	}
+	
+	/**
+	 * Methode permettant à l'admin de supprimer un produit de la base de données 
+	 * 
+	 * @return un string afin d'effectuer la redirection
+	 */
+	public String supprimerProduit(){
+		
+		//Rechercher un produit par son nom
+		this.produit= adminService.chercherProduitByNameService(nomProduit);
+		
+		// Si le retour est 1 alors on a supprimé le produit et on retourne sur page accueil admin
+		int verif = adminService.supprimerProduitByNameService(this.produit);
 
+		if (verif == 1) {
+			return "succesAdmin";
+			
+		} else {
+			return "echecAdmin";
+		}
+		
+	}
+	
+	/**
+	 * Methode permettant à l'admin de modifier un produit de la base de données 
+	 * 
+	 * @return un string afin d'effectuer la redirection
+	 */
+	public String modifierProduit(){
+		
+		
+		// Si le retour est 1 alors on a supprimé le produit et on retourne sur page accueil admin
+		int verif = adminService.modifierProduitService(this.id_produit, this.produit);
+
+		if (verif == 1) {
+			return "succesAdmin";
+			
+		} else {
+			return "echecAdmin";
+		}
+	}
 }
