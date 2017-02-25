@@ -55,31 +55,13 @@ public interface IClientDao {
 	public List<Produit> getAllProduitSelectionne();
 	
 	
-	/**
-	 * Methode pour ajouter un produit au panier (en specifiant la quantite)
-	 * @param produit
-	 * @param quantite
-	 * @return le produit qu'on ajouter au panier
-	 */
-	public Produit ajouterProduitPanierByName(Produit produit, int quantite);
-	
-	
-	 
-	/**
-	 * Methode pour supprimer un objet du panier (on lui donne l'index du produit dans la liste du panier)
-	 * @param indexProduit
-	 * @return le produit à supprimer du panier
-	 */
-	public Produit supprimerProduitPanierById(int indexProduit);
-	
 	
 	/**
 	 * Methode pour ajouter dans la base de données la commande et le client
 	 * @param client
-	 * @param commande
 	 * @return un entier qui nous vérifie le bon fontionnement de la méthode
 	 */
-	public int EnregistrerClientCommande(Client client, Commande commande);
+	public int EnregistrerClientCommande(Client client);
 	
 	
 

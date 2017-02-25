@@ -21,12 +21,9 @@ public class AdminDaoImpl implements IAdminDao {
 	@PersistenceContext(unitName = "PU")
 	EntityManager em;
 
-
-	
 	@Override
 	public int isExist(Admin admin) {
 
-		
 		// Ecriture de la requete
 		String req = "select a from Admin as a where a.mail=:pMail and a.password=:pPassword";
 
@@ -42,11 +39,11 @@ public class AdminDaoImpl implements IAdminDao {
 		List<Admin> liste = query.getResultList();
 
 		if (liste.size() != 0) {
-			
+
 			// Si la liste n'est pas vide alors on a au moins un admin qui
 			// correspond
 			return liste.size();
-			
+
 		} else {
 			// Si la liste est vide alors on retourne 0
 			return 0;
@@ -55,70 +52,108 @@ public class AdminDaoImpl implements IAdminDao {
 
 	@Override
 	public int ajouterProduit(Produit produit) {
-		
-		// Try/Catch permet de prevenir toute exception et de fournir un retour 
+
+		// Try/Catch permet de prevenir toute exception et de fournir un retour
 		try {
-			
+
 			em.persist(produit);
 			return 1;
-			
+
 		} catch (Exception e) {
-			
+
 			return 0;
 		}
-		
+
 	}
 
 	@Override
 	public int supprimerProduitByName(Produit produit) {
-		
+
 		try {
-			
+
+			em.remove(produit);
 			return 1;
-			
+
 		} catch (Exception e) {
-			
+
 			return 0;
 		}
-		
-		
+
 	}
 
 	@Override
 	public int modifierProduit(int id_produit, Produit produit) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		try {
+
+			// Recuperation du produit en question dans la base de données
+			Produit p = em.find(Produit.class, id_produit);
+
+			// Assignation des nouveaux paramètres
+			p.setDescription(produit.getDescription());
+			p.setDesignation(produit.getDesignation());
+			p.setpCategorie(produit.getpCategorie());
+			p.setQuantite(produit.getQuantite());
+			p.setPrix(produit.getPrix());
+			p.setSelectionne(produit.isSelectionne());
+
+			// Modification du produit dans la base de données
+			em.merge(p);
+
+			return 1;
+
+		} catch (Exception e) {
+
+			return 0;
+
+		}
+
 	}
 
 	@Override
 	public Produit chercherProduitByName(String designation_produit) {
-		
-		
+
 		try {
-			
+
 			// Ecriture de la requete
-			String req="select p from Produit p where p.designation=:pDesignation";
-			
+			String req = "select p from Produit p where p.designation=:pDesignation";
+
 			// Creation de la requete
-			Query query=em.createQuery(req);
-			
+			Query query = em.createQuery(req);
+
 			// Assignation des paramètres
 			query.setParameter("pDesignation", designation_produit);
-			
-			// Recuperation des résultats 
+
+			// Recuperation des résultats
 			return (Produit) query.getSingleResult();
-			
-			
+
 		} catch (Exception e) {
 			return null;
 		}
 	}
 
-	
 	@Override
 	public List<Produit> getAllProduit() {
-		// TODO Auto-generated method stub
-		return null;
+
+
+		// Ecriture de la requete
+		String req="select p from Produit p";
+		
+		// Creation d'une requete
+		Query query=em.createQuery(req);
+		
+		// Recuperation des résultats de la requete
+		List<Produit> listeProduit=query.getResultList();
+		
+		// Si il y a au moins un produit dans la base de données
+		if (listeProduit.size()!=0){
+			
+			return listeProduit;
+			
+		} else {
+			
+			return null;
+		}
 	}
 
 }

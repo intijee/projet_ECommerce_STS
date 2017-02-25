@@ -3,6 +3,7 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,7 +42,7 @@ public class Client implements Serializable {
 	
 	
 	// Attribut qui lie le client à ses commandes 
-	@OneToMany (mappedBy="pClient")
+	@OneToMany (mappedBy="pClient", cascade=CascadeType.ALL)
 	private List<Commande> listeCommandes;
 
 	
