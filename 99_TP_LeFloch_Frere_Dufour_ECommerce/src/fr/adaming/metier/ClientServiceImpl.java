@@ -25,44 +25,34 @@ public class ClientServiceImpl implements IClientService {
 
 	@Override
 	public List<Produit> getAllProduitCategorieService(Categorie categorie) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return clientDao.getAllProduitByCategorie(categorie);
 	}
 
 	@Override
 	public void selectionnerProduitByNameService(String designation_produit) {
-		// TODO Auto-generated method stub
-
+		
+		clientDao.selectionnerProduitByName(designation_produit);
 	}
 
 	@Override
 	public List<Produit> getAllProduitSelectionneService() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return clientDao.getAllProduitSelectionne();
 	}
 
-	@Override
-	public Produit ajouterProduitPanierByNameService(Produit produit,int quantite) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public Produit supprimerProduitPanierByIdService(int indexProduit) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int EnregistrerClientCommandeService(Client client, Commande commande) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int EnregistrerClientCommandeService(Client client) {
+		
+		return clientDao.EnregistrerClientCommande(client);
+		
 	}
 
 	@Override
 	public Produit chercherProduitMotCleService(String motCle) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return clientDao.chercherProduitMotCle(motCle);
 	}
 
 	@Override

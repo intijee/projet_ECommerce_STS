@@ -46,47 +46,127 @@ public class ClientDaoImpl implements IClientDao {
 
 	@Override
 	public List<Produit> getAllProduitByCategorie(Categorie categorie) {
-		// TODO Auto-generated method stub
-		return null;
+
+		// Ecriture de la requete
+		String req="select p from Produit p where p.pCategorie.id=:pCatId";
+		
+		// Creation de la requete
+		Query query=em.createQuery(req);
+		
+		// Assignation des paramètres de la requete
+		query.setParameter("pCatId", categorie.getId());
+		
+		// Recuperation des résultats
+		List<Produit> listeProduit=query.getResultList();
+		
+		// Si la liste contient au moins un élément on la retourne sinon on retourne null
+		if (listeProduit.size()!=0){
+			
+			return listeProduit;
+		} else {
+			return null;
+		}
 	}
 
 	@Override
 	public void selectionnerProduitByName(String designation_produit) {
-		// TODO Auto-generated method stub
 
+
+		// Ecriture de la requete
+		String req="select p from Produit p where p.designation=:pDesign";
+		
+		// Creation de la requete
+		Query query=em.createQuery(req);
+		
+		// Assignation des paramètres 
+		query.setParameter("pDesign", designation_produit);
+		
+		// Recuperation du produit en question
+		Produit p1=(Produit) query.getSingleResult();
+		
+		// Assignation de la valeur true au paramètre selectionné du produit
+		p1.setSelectionne(true);
+		
+		// Modification dans la base de données
+		em.merge(p1);
+	
 	}
 
 	@Override
 	public List<Produit> getAllProduitSelectionne() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		// Ecriture de la requete
+		String req="select p from Produit p";
+		
+		// Creation de la requete
+		Query query=em.createQuery(req);
+		
+		// Recuperation de tous les produits
+		List<Produit> listeProd=query.getResultList();
+		
+		// Creation d'une liste qui recupère uniquement ceux qui sont selectionnés
+		List<Produit> listeProduitSelectionne=new ArrayList<Produit>();
+		
+		for (Produit p: listeProd){
+			// Si le produit est selectionné alors il est ajouté à la liste
+			if (p.isSelectionne()==true){
+				listeProduitSelectionne.add(p);
+			} else {
+				
+			}		
+		}
+		
+		// Retour de la liste des produits sélectionnés
+		return listeProduitSelectionne;
+		
+		
+		
 	}
 
-	@Override
-	public Produit ajouterProduitPanierByName(Produit produit, int quantite) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public Produit supprimerProduitPanierById(int indexProduit) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public int EnregistrerClientCommande(Client client) {
 
-	
-	@Override
-	public int EnregistrerClientCommande(Client client, Commande commande) {
-		// TODO Auto-generated method stub
-		return 0;
+
+		try {
+			
+			em.persist(client);
+			
+			return 1;
+			
+		} catch (Exception e) {
+			
+			return 0;
+			
+		}
+		
 	}
 
 	
 
 	@Override
 	public Produit chercherProduitMotCle(String motCle) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		// Ecriture de la requete
+		String req="select p from Produit p where p.designation like ?1%";
+		
+		
+		// Creation d'une requete
+		Query query=em.createQuery(req);
+		
+		// Assignation des paramètres de la requete
+		query.setParameter(1, motCle);
+		
+		// Recupération des résultats (dans une liste afin de faire une vérification que la recherche n'est pas nulle)
+		List<Produit> listeProd=query.getResultList();
+		
+		if (listeProd.size()!=0){
+			// On choisit de recuperer uniquement le premier produit
+			return listeProd.get(0);
+		} else {
+			return null;
+		}
+				
 	}
 
 	@Override

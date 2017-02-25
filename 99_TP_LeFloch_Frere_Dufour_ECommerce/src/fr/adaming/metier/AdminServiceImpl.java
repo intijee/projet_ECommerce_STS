@@ -36,14 +36,13 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	public int supprimerProduitByNameService(Produit produit) {
-		// TODO Auto-generated method stub
-		return 0;
+		return adminDao.supprimerProduitByName(produit);
 	}
 
 	@Override
 	public int modifierProduitService(int id_produit, Produit produit) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return adminDao.modifierProduit(id_produit, produit);
 	}
 
 	@Override
@@ -53,8 +52,7 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	public List<Produit> getAllProduitService() {
-		// TODO Auto-generated method stub
-		return null;
+		return adminDao.getAllProduit();
 	}
 
 

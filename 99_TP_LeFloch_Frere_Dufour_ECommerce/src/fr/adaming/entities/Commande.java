@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,7 +41,7 @@ public class Commande implements Serializable {
 	
 	
 	// Attribut qui représente l'association entre la ligne de commande 
-	@OneToMany(mappedBy="pCommande")
+	@OneToMany(mappedBy="pCommande",cascade=CascadeType.ALL)
 	private List<LigneCommande> listeLignesCommandes;
 	
 	// Attribut qui représente l'association entre le client et la commande
