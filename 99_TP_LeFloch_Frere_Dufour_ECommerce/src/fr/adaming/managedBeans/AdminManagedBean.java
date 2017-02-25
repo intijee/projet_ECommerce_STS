@@ -192,6 +192,22 @@ public class AdminManagedBean implements Serializable {
 	public void setRendu(boolean rendu) {
 		this.rendu = rendu;
 	}
+	
+	
+	/**
+	 * @return id_produit
+	 */
+	public int getId_produit() {
+		return id_produit;
+	}
+	
+	/**
+	 * @param id_produit
+	 *            the id_produit to set
+	 */
+	public void setId_produit(int id_produit) {
+		this.id_produit = id_produit;
+	}
 
 	/**
 	 * Methode déclenché après l'instanciation d'un AdminManagedBean qui
@@ -222,10 +238,10 @@ public class AdminManagedBean implements Serializable {
 		int verif = adminService.isExistService(admin);
 
 		// Si le retour est 1, alors un admin existe
-		if (verif == 1) {
-			return "succesAdmin";
-		} else {
+		if (verif == 0) {
 			return "echecAdmin";
+		} else {
+			return "succesAdmin";
 		}
 	}
 
