@@ -73,4 +73,11 @@ public class ClientServiceImpl implements IClientService {
 		return clientDao.getAllProduitName();
 	}
 
+	@Override
+	public void remiseZeroSelectionneService() {
+
+		clientDao.remiseZeroSelectionne();
+		
+	}
+
 }

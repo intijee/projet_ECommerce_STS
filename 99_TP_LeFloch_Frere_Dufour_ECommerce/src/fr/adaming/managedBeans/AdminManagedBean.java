@@ -327,4 +327,6 @@ public class AdminManagedBean implements Serializable {
 			return "echecAdmin";
 		}
 	}
+	
+
 }

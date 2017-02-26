@@ -97,5 +97,10 @@ public interface IClientDao {
 	public List<String> getAllProduitName();
 	
 	
+	/**
+	 * Methode qui remet les valeurs des booléens à false dans la base de données
+	 */
+	public void remiseZeroSelectionne();
+	
 
 }

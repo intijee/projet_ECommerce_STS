@@ -226,6 +226,30 @@ public class ClientDaoImpl implements IClientDao {
 		return listeNomProduit;
 		
 	}
+
+	@Override
+	public void remiseZeroSelectionne() {
+
+
+		// Ecriture de la requete
+		String req="select p from Produit p";
+		
+		// Creation d'une requete
+		Query query=em.createQuery(req);
+		
+		// Recuperation des résultats
+		List<Produit> listeProduit=query.getResultList();
+		
+		// Remise a false du boolean si il vaut true
+		for(Produit p: listeProduit){
+			
+			if (p.isSelectionne()==true){
+				p.setSelectionne(false);
+				em.merge(p);
+			}
+		}
+		
+	}
 	
 	
 

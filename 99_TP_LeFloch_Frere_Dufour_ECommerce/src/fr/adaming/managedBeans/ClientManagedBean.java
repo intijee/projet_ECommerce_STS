@@ -86,6 +86,8 @@ public class ClientManagedBean implements Serializable {
 	// Pour afficher ou non les tableaux
 	private boolean rendu;
 	private boolean rendu1;
+	private boolean renduAjouterProduitPanier;
+	private boolean renduSelectionnerProduit;
 	
 	// Recuepere la liste des noms des produits d'une categorie
 	List<String> listeNomProduitByCat;
@@ -430,6 +432,36 @@ public class ClientManagedBean implements Serializable {
 		this.listeProduitSelectionne = listeProduitSelectionne;
 	}
 
+	
+	
+	/**
+	 * @return the renduAjouterProduitPanier
+	 */
+	public boolean isRenduAjouterProduitPanier() {
+		return renduAjouterProduitPanier;
+	}
+
+	/**
+	 * @param renduAjouterProduitPanier the renduAjouterProduitPanier to set
+	 */
+	public void setRenduAjouterProduitPanier(boolean renduAjouterProduitPanier) {
+		this.renduAjouterProduitPanier = renduAjouterProduitPanier;
+	}
+
+	/**
+	 * @return the renduSelectionnerProduit
+	 */
+	public boolean isRenduSelectionnerProduit() {
+		return renduSelectionnerProduit;
+	}
+
+	/**
+	 * @param renduSelectionnerProduit the renduSelectionnerProduit to set
+	 */
+	public void setRenduSelectionnerProduit(boolean renduSelectionnerProduit) {
+		this.renduSelectionnerProduit = renduSelectionnerProduit;
+	}
+
 	// Les méthodes du managedBean Client --------------
 	@PostConstruct
 	public void remplirListe() {
@@ -445,8 +477,6 @@ public class ClientManagedBean implements Serializable {
 		
 		this.listeNomProduitByCat=new ArrayList<String>();
 		
-		this.listeProduitSelectionne=clientService.getAllProduitSelectionneService();
-		
 		listeCommandeClient=new ArrayList<Commande>();
 		
 		listeLigneCommande=new ArrayList<LigneCommande>();
@@ -454,6 +484,11 @@ public class ClientManagedBean implements Serializable {
 		listeProduit=adminService.getAllProduitService();
 		
 		listeProduitMotCle=new ArrayList<Produit>();
+		
+		// Remise à false de tous les booleans de la base de données
+		clientService.remiseZeroSelectionneService();
+		
+		this.listeProduitSelectionne=clientService.getAllProduitSelectionneService();
 
 	}
 
@@ -489,6 +524,10 @@ public class ClientManagedBean implements Serializable {
 		int id_produit=produit.getId();
 		
 		clientService.selectionnerProduitByNameService(id_produit);
+		
+		listeProduitSelectionne=clientService.getAllProduitSelectionneService();
+		
+		renduSelectionnerProduit=true;
 
 	}
 
@@ -498,7 +537,7 @@ public class ClientManagedBean implements Serializable {
 	 */
 	public void afficherProduitSelectionner() {
 
-		this.listeProduit = clientService.getAllProduitSelectionneService();
+		this.listeProduitSelectionne = clientService.getAllProduitSelectionneService();
 
 	}
 
@@ -538,6 +577,7 @@ public class ClientManagedBean implements Serializable {
 		// On associe cette liste au panier
 		panier.setListeLigneCommandes(listeLigneCommande);
 		
+		renduAjouterProduitPanier=true;
 
 	}
 
@@ -559,7 +599,6 @@ public class ClientManagedBean implements Serializable {
 	public String enregistrerClientCommandes() {
 		
 		for (LigneCommande ligne:listeLigneCommande){
-			System.out.println("saluté");
 			ligne.setpCommande(commande);
 		}
 		

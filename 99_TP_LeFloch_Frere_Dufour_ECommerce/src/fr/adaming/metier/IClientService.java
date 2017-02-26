@@ -82,4 +82,10 @@ public interface IClientService {
 	 */
 	public List<String> getAllProduitNameService();
 	
+
+	/**
+	 * Methode qui remet les valeurs des booléens à false dans la base de données
+	 */
+	public void remiseZeroSelectionneService();
+	
 }
