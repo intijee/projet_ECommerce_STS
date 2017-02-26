@@ -1,0 +1,47 @@
+@CHARSET "ISO-8859-1";
+
+
+
+
+#logoT{
+	color: white;
+	text-decoration: underline;	
+	float: right;
+}
+#topDiv{
+	background-color: #3a3a3a;
+	
+	height: 75px;
+	
+	position: fixed;
+	
+	z-index: 10;
+	
+}
+
+#messageDiv{
+	background-color: blue;
+	
+	height: 100px;	
+}
+
+#contenuDiv{
+	background-color: green;
+	
+	height: 800px
+	
+}
+
+#menuDiv {
+	background-color: red;
+	
+	height: 800px;
+	
+}
+
+#footerDiv{
+	background-color: orange;
+	
+	height: 100px;
+	
+}

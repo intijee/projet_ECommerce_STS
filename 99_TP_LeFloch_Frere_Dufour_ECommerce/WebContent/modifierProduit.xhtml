@@ -6,23 +6,61 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-<title>Modifier Produit</title>
-
+	<title>Accueil Admin</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputScript library="js" name="bootstrap.min.js" />
+	<h:outputStylesheet library="css" name="MonStyle.css"/>
 </h:head>
 
+
 <h:body>
-<h:form>
-<p:breadCrumb>
-    <p:menuitem value="Ajouter Produit" url="ajouterProduit.xhtml" />
-    <p:menuitem value="Supprimer Produit" url="supprimerProduit.xhtml" />
-    <p:menuitem value="Liste Produits" url="afficherTousLesProduits.xhtml" />
-    <p:menuitem value="Consulter" url="consulterProduit.xhtml" />
-    <p:menuitem value="Modifier Produit" url="modifierProduit.xhtml" />
-    <p:menuitem value="Deconnection" url="accueil.xhtml" />
-</p:breadCrumb>
-</h:form>
-<p:separator></p:separator>
-<p:spacer height="20"></p:spacer>
+
+
+<div class="container-fluid"
+		style="background-image: url('resources/img/518151-backgrounds_W3qVPu2.jpg');">
+		<div class="row">
+			<ui:include src="include/logo.xhtml"></ui:include>
+			<div class="container" align="center" style="margin-top: 75px">
+				<div class="row">
+
+					<ul class="nav nav-pills nav-justified">
+						<li role="presentation"  id="AfficherCatégorie"><a
+							href="accueilAdmin.xhtml">Accueil </a></li>
+						<li role="presentation" id="AfficherCatégorie"><a
+							href="ajouterProduit.xhtml">Ajouter Produit</a></li>
+						<li role="presentation" id="getProduit"><a
+							href="supprimerProduit.xhtml">Supprimer Produit</a></li>
+						<li role="presentation" id="AfficherSauv"><a
+							href="afficherTousLesProduitsAdmin.xhtml">Liste Produits</a></li>
+						<li role="presentation" id="AfficherSauv"><a
+							href="consulterProduitAdmin.xhtml">Consulter</a></li>
+						<li role="presentation" class="active" id="AfficherSauv"><a
+							href="modifierProduit.xhtml">Modifier Produit</a></li>
+						<li role="presentation" id="AfficherSauv"><a
+							href="accueil.xhtml">Deconnection</a></li>
+					</ul>
+					<p:separator></p:separator>
+
+
+
+
+					<div class="col-xs-12" id="messageDiv"></div>
+					<div class="col-xs-2" id="menuDiv"></div>
+
+					<div class="col-xs-10" id="contenuDiv">
+						
+					
+					
+					</div>
+
+
+					<div class="col-xs-12" id="footerDiv"></div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
 
 </h:body>
 </html>

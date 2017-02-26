@@ -7,57 +7,79 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Ajouter produit</title>
-
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputScript library="js" name="bootstrap.min.js" />
+	<h:outputStylesheet library="css" name="MonStyle.css"/>
 </h:head>
 
 <h:body>
 
-	<h:form>
-		<p:breadCrumb>
-			<p:menuitem value="Ajouter Produit" url="ajouterProduit.xhtml" />
-			<p:menuitem value="Ajouter Produit" url="ajouterProduit.xhtml" />
-			<p:menuitem value="Supprimer Produit" url="supprimerProduit.xhtml" />
-			<p:menuitem value="Liste Produits"
-				url="afficherTousLesProduits.xhtml" />
-			<p:menuitem value="Consulter" url="consulterProduitAdmin.xhtml" />
-			<p:menuitem value="Modifier Produit" url="modifierProduit.xhtml" />
-			<p:menuitem value="Deconnection" url="accueil.xhtml" />
-		</p:breadCrumb>
-	</h:form>
-	<p:separator></p:separator>
-	<p:spacer height="20"></p:spacer>
+	
+<div class="container-fluid"
+		style="background-image: url('resources/img/518151-backgrounds_W3qVPu2.jpg');">
+		<div class="row">
+			<ui:include src="include/logo.xhtml"></ui:include>
+			<div class="container" align="center" style="margin-top: 75px">
+				<div class="row">
+
+					<ul class="nav nav-pills nav-justified">
+						<li role="presentation"  id="AfficherCatégorie"><a
+							href="accueilAdmin.xhtml">Accueil </a></li>
+						<li role="presentation" class="active" id="AfficherCatégorie"><a
+							href="ajouterProduit.xhtml">Ajouter Produit</a></li>
+						<li role="presentation" id="getProduit"><a
+							href="supprimerProduit.xhtml">Supprimer Produit</a></li>
+						<li role="presentation" id="AfficherSauv"><a
+							href="afficherTousLesProduitsAdmin.xhtml">Liste Produits</a></li>
+						<li role="presentation" id="AfficherSauv"><a
+							href="consulterProduitAdmin.xhtml">Consulter</a></li>
+						<li role="presentation" id="AfficherSauv"><a
+							href="modifierProduit.xhtml">Modifier Produit</a></li>
+						<li role="presentation" id="AfficherSauv"><a
+							href="accueil.xhtml">Deconnection</a></li>
+					</ul>
+					<p:separator></p:separator>
 
 
 
-	<div align="center">
+
+					<div class="col-xs-12" id="messageDiv"></div>
+					<div class="col-xs-2" id="menuDiv"></div>
+
+					<div class="col-xs-10" id="contenuDiv">
+						
+					<div align="center">
+					
+	<h1>Formulaire d'ajout d'un produit</h1>				
+					
 		<h:form>
 			<h:panelGrid column="3">
 
-				<h:outputText value="Designation" />
+				<h3>Designation</h3>
 				<p:inputText label="Designation"
 					value="#{adminManagedBean.produit.designation}" id="designationId">
 					
 				</p:inputText>
 
-				<h:outputText value="Description" />
-				<p:inputText label="Description"
-					value="#{adminManagedBean.produit.description}" id="descriptionId">
-					
-				</p:inputText>
+				<h3>Description</h3>
+				
 
-				<h:outputText value="Prix" />
+				<p:inputTextarea rows="5" cols="75" counter="display" maxlength="500" counterTemplate="{0} characters remaining."  />
+   				<h:outputText id="display" />
+
+				<h3>Prix</h3>
 				<p:inputText label="Prix" value="#{adminManagedBean.produit.prix}"
 					id="prixId">
 					
 				</p:inputText>
 
-				<h:outputText value="Quantite" />
+				<h3>Stock</h3>
 				<p:inputText label="Quantite"
 					value="#{adminManagedBean.produit.quantite}" id="quantiteId">
 					</p:inputText>
 
 
-				<h:outputText value="Categorie" />
+				<h3>Catégorie</h3>
 
 				<p:selectOneMenu value="#{adminManagedBean.nomCategorie}" id="categorieId" >
 				<f:selectItems value="#{adminManagedBean.listeNomCategorie}" />
@@ -68,11 +90,20 @@
 
 			</h:panelGrid>
 
-			<h:commandButton value="
-						Ajouter Produit"
+			<h:commandButton value="Ajouter Produit"
 				action="#{adminManagedBean.ajouterProduit}" />
 		</h:form>
 	</div>
+					
+					</div>
 
+
+					<div class="col-xs-12" id="footerDiv"></div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
 </h:body>
 </html>

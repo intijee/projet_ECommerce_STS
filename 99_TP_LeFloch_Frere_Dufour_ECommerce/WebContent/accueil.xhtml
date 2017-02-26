@@ -5,14 +5,53 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-<title>Accueil</title>
-
+	<title>Accueil</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputScript library="js" name="bootstrap.min.js" />
+	<h:outputStylesheet library="css" name="MonStyle.css"/>
 </h:head>
 
 <h:body>
+	<div class="container-fluid"
+		style="background-image: url('resources/img/518151-backgrounds_W3qVPu2.jpg');">
+		<div class="row">
+			<ui:include src="include/logo.xhtml"></ui:include>
+			<div class="container" align="center" style="margin-top: 75px">
+				<div class="row">
 
-<h1>index</h1>
+					<ul class="nav nav-pills nav-justified">
+						<li role="presentation" class="active" id="AfficherCatégorie"><a
+							href="accueil.xhtml">Accueil </a></li>
+						<li role="presentation" id="AfficherCatégorie"><a
+							href="afficherToutesCategories.xhtml">Afficher les catégories</a></li>
+						<li role="presentation" id="getProduit"><a
+							href="chercherProduitMotCle.xhtml">Rechercher un Produit</a></li>
+						<li role="presentation" id="AfficherSauv"><a
+							href="consulterProduitSelectionnes.xhtml">Afficher Produit
+								selectionner</a></li>
+					</ul>
+					<p:separator></p:separator>
 
+
+
+
+					<div class="col-xs-12" id="messageDiv"></div>
+					<div class="col-xs-2" id="menuDiv"></div>
+
+					<div class="col-xs-10" id="contenuDiv">
+						
+					
+					
+					</div>
+
+
+					<ui:include src="include/Footer.xhtml"></ui:include>
+prout
+
+				</div>
+			</div>
+		</div>
+	</div>
 
 </h:body>
 </html>
