@@ -1,7 +1,16 @@
 @CHARSET "ISO-8859-1";
 
 
-
+#login {
+	
+	width: 500px;
+	height: 200px;
+	background-color: white;
+	opacity: 0.8;
+	box-shadow: 10px 10px 5px #888888;
+	
+	
+}
 
 #logoT{
 	color: white;

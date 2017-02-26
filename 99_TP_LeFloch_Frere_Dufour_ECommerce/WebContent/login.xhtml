@@ -7,13 +7,18 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 <title>Login Admin</title>
-
+<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputScript library="js" name="bootstrap.min.js" />
+	<h:outputStylesheet library="css" name="MonStyle.css"/>
 </h:head>
 
 <h:body>
-
-	<div align="center">
-		<h1>Page de login</h1>
+<div class="container-fluid"
+		style="background-image: url('resources/img/518151-backgrounds_W3qVPu2.jpg'); height: 800px;width: 1000px">
+<div align="center" style="margin-top: 300px">
+	<div align="center" id="login">
+		<h1>Page de login administrateur</h1>
+		<br/>
 		<h:form>
 			<h:panelGrid columns="3">
 				Email
@@ -37,6 +42,7 @@
 		</h:form>
 
 	</div>
-
+</div>
+</div>
 </h:body>
 </html>
