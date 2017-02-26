@@ -71,8 +71,7 @@ public class AdminManagedBean implements Serializable {
 		this.admin = new Admin();
 		this.produit = new Produit();
 		this.categorie = new Categorie();
-		this.id_produit= new Produit().getId();
-		
+		this.id_produit= new Produit().getId();	
 	}
 
 	// Getter et setter
