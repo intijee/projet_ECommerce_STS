@@ -6,9 +6,9 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
+
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+
 
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Client;
@@ -20,7 +20,7 @@ import fr.adaming.metier.IAdminService;
 import fr.adaming.metier.IClientService;
 
 @ManagedBean
-@SessionScoped
+@javax.faces.bean.SessionScoped
 public class ClientManagedBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
