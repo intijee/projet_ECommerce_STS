@@ -521,7 +521,7 @@ public class ClientManagedBean implements Serializable {
 
 		// Recuperation d'un produit à partir du nom envoyé par la page
 		this.produit = adminService.chercherProduitByNameService(nomProduit);
-
+	
 		// On associe a une ligne de commande son produit
 		ligneCom.setpProduit(produit);
 
@@ -538,7 +538,6 @@ public class ClientManagedBean implements Serializable {
 		// On associe cette liste au panier
 		panier.setListeLigneCommandes(listeLigneCommande);
 		
-		System.out.println(listeLigneCommande.size());
 
 	}
 
@@ -559,9 +558,6 @@ public class ClientManagedBean implements Serializable {
 	 */
 	public String enregistrerClientCommandes() {
 		
-		System.out.println(listeLigneCommande.size());
-		
-		//listeLigneCommande=panier.getListeLigneCommandes();
 		for (LigneCommande ligne:listeLigneCommande){
 			System.out.println("saluté");
 			ligne.setpCommande(commande);

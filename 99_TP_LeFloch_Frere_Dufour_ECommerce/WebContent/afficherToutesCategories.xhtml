@@ -98,10 +98,11 @@
 
 				<h3>Produit</h3>
 
-				<p:selectOneMenu value="#{clientManagedBean.nomProduit}" id="produitId" >
-				<f:selectItems value="#{clientManagedBean.listeNomProduitByCat}" />
+				<p:selectOneMenu value="#{clientManagedBean.nomProduit}" id="nomProdId">
+				<f:selectItems value="#{clientManagedBean.listeNomProduitByCat}"/>
   				 </p:selectOneMenu>
-					<h:message for="produitId" />
+  				 <h:message for="nomProdId"></h:message>
+					
 					
 			<h:inputText value="#{clientManagedBean.ligneCom.quantite}"/>
 					
