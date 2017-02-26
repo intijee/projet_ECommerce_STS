@@ -47,6 +47,7 @@ public class ClientDaoImpl implements IClientDao {
 	@Override
 	public List<Produit> getAllProduitByCategorie(Categorie categorie) {
 
+		System.out.println(categorie.getId());
 		// Ecriture de la requete
 		String req="select p from Produit p where p.pCategorie.id=:pCatId";
 		
@@ -69,20 +70,11 @@ public class ClientDaoImpl implements IClientDao {
 	}
 
 	@Override
-	public void selectionnerProduitByName(String designation_produit) {
+	public void selectionnerProduitByName(int id_produit) {
 
 
-		// Ecriture de la requete
-		String req="select p from Produit p where p.designation=:pDesign";
-		
-		// Creation de la requete
-		Query query=em.createQuery(req);
-		
-		// Assignation des paramètres 
-		query.setParameter("pDesign", designation_produit);
-		
-		// Recuperation du produit en question
-		Produit p1=(Produit) query.getSingleResult();
+		// On recupère le produit
+		Produit p1=em.find(Produit.class, id_produit);
 		
 		// Assignation de la valeur true au paramètre selectionné du produit
 		p1.setSelectionne(true);
@@ -148,7 +140,7 @@ public class ClientDaoImpl implements IClientDao {
 	public List<Produit> chercherProduitMotCle(String motCle) {
 		
 		// Ecriture de la requete
-		String req="select p from Produit p where p.designation like ?1%";
+		String req="select p from Produit p where p.designation like ?1'%'";
 		
 		
 		// Creation d'une requete

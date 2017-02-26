@@ -35,10 +35,10 @@ public interface IAdminService {
 
 	/**
 	 * Méthode pour supprimer un produit dans la base de données
-	 * @param produit
+	 * @param id_produit
 	 * @return un entier pour savoir si la suppression a reussi
 	 */
-	public int supprimerProduitByNameService(Produit produit);
+	public int supprimerProduitByNameService(int id_produit);
 	
 
 	/**

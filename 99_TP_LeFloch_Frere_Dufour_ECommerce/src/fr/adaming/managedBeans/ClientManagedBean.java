@@ -1,10 +1,12 @@
 package fr.adaming.managedBeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -18,7 +20,7 @@ import fr.adaming.metier.IAdminService;
 import fr.adaming.metier.IClientService;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class ClientManagedBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -74,19 +76,37 @@ public class ClientManagedBean implements Serializable {
 	
 	// Recupère la liste des commandes d'un client
 	private List<Commande> listeCommandeClient;
-
+	
 	// Recupère le mot clé pour retrouver le nom d'un produit
 	private String motCle = new String();
 
 	// Recupère l'index des lignes de commande du panier
 	private int index;
 
+	// Pour afficher ou non les tableaux
+	private boolean rendu;
+	private boolean rendu1;
+	
+	// Recuepere la liste des noms des produits d'une categorie
+	List<String> listeNomProduitByCat;
+	
+	// Recupere la liste des produits d'une categorie
+	List<Produit> listeProduitByCat;
+	
+	// Recupere la liste des produits trouvés avec le mot clé
+	List<Produit> listeProduitMotCle;
+
+	// Recupere la liste des produits selectionnes
+	List<Produit> listeProduitSelectionne;
+	
 	// Constructeur vide
 	public ClientManagedBean() {
 		this.client = new Client();
 		this.categorie = new Categorie();
 		this.produit = new Produit();
 		this.ligneCom=new LigneCommande();
+		this.panier=new Panier();
+		this.commande=new Commande();
 	}
 
 	// getter et setter
@@ -318,6 +338,97 @@ public class ClientManagedBean implements Serializable {
 	public void setListeCommandeClient(List<Commande> listeCommandeClient) {
 		this.listeCommandeClient = listeCommandeClient;
 	}
+	
+	
+	
+	/**
+	 * @return the rendu
+	 */
+	public boolean isRendu() {
+		return rendu;
+	}
+
+	/**
+	 * @param rendu the rendu to set
+	 */
+	public void setRendu(boolean rendu) {
+		this.rendu = rendu;
+	}
+	
+
+	/**
+	 * @return the listeNomProduitByCat
+	 */
+	public List<String> getListeNomProduitByCat() {
+		return listeNomProduitByCat;
+	}
+
+	/**
+	 * @param listeNomProduitByCat the listeNomProduitByCat to set
+	 */
+	public void setListeNomProduitByCat(List<String> listeNomProduitByCat) {
+		this.listeNomProduitByCat = listeNomProduitByCat;
+	}
+
+	/**
+	 * @return the listeProduitByCat
+	 */
+	public List<Produit> getListeProduitByCat() {
+		return listeProduitByCat;
+	}
+
+	/**
+	 * @param listeProduitByCat the listeProduitByCat to set
+	 */
+	public void setListeProduitByCat(List<Produit> listeProduitByCat) {
+		this.listeProduitByCat = listeProduitByCat;
+	}
+	
+
+	/**
+	 * @return the listeProduitMotCle
+	 */
+	public List<Produit> getListeProduitMotCle() {
+		return listeProduitMotCle;
+	}
+
+	/**
+	 * @param listeProduitMotCle the listeProduitMotCle to set
+	 */
+	public void setListeProduitMotCle(List<Produit> listeProduitMotCle) {
+		this.listeProduitMotCle = listeProduitMotCle;
+	}
+
+	
+	/**
+	 * @return the rendu1
+	 */
+	public boolean isRendu1() {
+		return rendu1;
+	}
+
+	/**
+	 * @param rendu1 the rendu1 to set
+	 */
+	public void setRendu1(boolean rendu1) {
+		this.rendu1 = rendu1;
+	}
+	
+	
+
+	/**
+	 * @return the listeProduitSelectionne
+	 */
+	public List<Produit> getListeProduitSelectionne() {
+		return listeProduitSelectionne;
+	}
+
+	/**
+	 * @param listeProduitSelectionne the listeProduitSelectionne to set
+	 */
+	public void setListeProduitSelectionne(List<Produit> listeProduitSelectionne) {
+		this.listeProduitSelectionne = listeProduitSelectionne;
+	}
 
 	// Les méthodes du managedBean Client --------------
 	@PostConstruct
@@ -329,6 +440,20 @@ public class ClientManagedBean implements Serializable {
 		this.listeNomCategorie = clientService.getAllCategorieNameService();
 
 		this.listeNomProduit = clientService.getAllProduitNameService();
+		
+		this.listeProduitByCat=new ArrayList<Produit>();
+		
+		this.listeNomProduitByCat=new ArrayList<String>();
+		
+		this.listeProduitSelectionne=clientService.getAllProduitSelectionneService();
+		
+		listeCommandeClient=new ArrayList<Commande>();
+		
+		listeLigneCommande=new ArrayList<LigneCommande>();
+		
+		listeProduit=adminService.getAllProduitService();
+		
+		listeProduitMotCle=new ArrayList<Produit>();
 
 	}
 
@@ -341,7 +466,16 @@ public class ClientManagedBean implements Serializable {
 		this.categorie = clientService.getCategorieByNameService(nomCategorie);
 
 		// on récupére une liste de produit correspondant à la catégorie
-		this.listeProduit = clientService.getAllProduitCategorieService(categorie);
+		this.listeProduitByCat = clientService.getAllProduitCategorieService(categorie);
+		
+		listeNomProduitByCat.clear();
+		
+		for (Produit p:listeProduitByCat){
+
+			listeNomProduitByCat.add(p.getDesignation());
+		}
+		
+		rendu=true;
 	}
 
 	/**
@@ -350,7 +484,11 @@ public class ClientManagedBean implements Serializable {
 	 */
 	public void selectionnerProduit() {
 
-		clientService.selectionnerProduitByNameService(nomProduit);
+		produit=adminService.chercherProduitByNameService(nomProduit);
+
+		int id_produit=produit.getId();
+		
+		clientService.selectionnerProduitByNameService(id_produit);
 
 	}
 
@@ -370,7 +508,9 @@ public class ClientManagedBean implements Serializable {
 	 */
 	public void chercherProduitByMotCle() {
 
-		listeProduit = clientService.chercherProduitMotCleService(motCle);
+		listeProduitMotCle = clientService.chercherProduitMotCleService(motCle);
+		
+		rendu1=true;
 
 	}
 
@@ -385,17 +525,20 @@ public class ClientManagedBean implements Serializable {
 		// On associe a une ligne de commande son produit
 		ligneCom.setpProduit(produit);
 
+		
 		// On calcule le prix en fonction de la quantité et du prix du produit
-		long prix = produit.getPrix() * ligneCom.getQuantite();
+		long prixTot = produit.getPrix() * ligneCom.getQuantite();
 		
 		// On donne son prix a la ligne de commande
-		ligneCom.setPrix(prix);
+		ligneCom.setPrix(20);
 
 		// On ajoute la ligne de commande à une liste
 		listeLigneCommande.add(ligneCom);
 		
 		// On associe cette liste au panier
 		panier.setListeLigneCommandes(listeLigneCommande);
+		
+		System.out.println(listeLigneCommande.size());
 
 	}
 
@@ -416,7 +559,20 @@ public class ClientManagedBean implements Serializable {
 	 */
 	public String enregistrerClientCommandes() {
 		
+		System.out.println(listeLigneCommande.size());
+		
+		//listeLigneCommande=panier.getListeLigneCommandes();
+		for (LigneCommande ligne:listeLigneCommande){
+			System.out.println("saluté");
+			ligne.setpCommande(commande);
+		}
+		
+		
 		commande.setListeLignesCommandes(listeLigneCommande);
+		
+		commande.setpClient(client);
+		
+		
 		
 		listeCommandeClient.add(commande);
 		
@@ -431,5 +587,6 @@ public class ClientManagedBean implements Serializable {
 			return "echecEnregistrer";
 		}
 	}
+
 
 }

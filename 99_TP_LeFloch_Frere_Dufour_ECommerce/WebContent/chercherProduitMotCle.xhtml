@@ -38,6 +38,54 @@
 
 					<div class="col-xs-10" id="contenuDiv">
 						
+					<div align="center">
+							<h:form>
+								<h:panelGrid column="3">
+
+									<h1>Chercher Produit par mot clé</h1>
+
+								<h:inputText value="#{clientManagedBean.motCle}"></h:inputText>
+
+
+
+								</h:panelGrid>
+
+								<h:commandButton value="chercher"
+									action="#{clientManagedBean.chercherProduitByMotCle}" />
+
+							</h:form>
+
+
+							<p:dataTable var="prod" value="#{clientManagedBean.listeProduitMotCle}"
+								rendered="#{clientManagedBean.rendu1}">
+
+					
+								<p:column headerText="Designation">
+									<h:outputText value="#{prod.designation}" />
+								</p:column>
+
+								<p:column headerText="Description">
+									<h:outputText value="#{prod.description}" />
+								</p:column>
+
+								<p:column headerText="Prix">
+									<h:outputText value="#{prod.prix}" />
+								</p:column>
+
+
+								<p:column headerText="Quantite">
+									<h:outputText value="#{prod.quantite}" />
+								</p:column>
+
+
+								<p:column headerText="Categorie">
+									<h:outputText
+										value="#{prod.pCategorie.nom}" />
+								</p:column>
+
+
+							</p:dataTable>
+						</div>
 					
 					
 					</div>

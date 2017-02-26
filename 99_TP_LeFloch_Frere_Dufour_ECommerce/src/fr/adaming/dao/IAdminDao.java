@@ -35,10 +35,10 @@ public interface IAdminDao {
 	
 	/**
 	 * Méthode pour supprimer un produit dans la base de données
-	 * @param produit 
+	 * @param id_produit 
 	 * @return un entier pour savoir si la suppression a reussi
 	 */
-	public int supprimerProduitByName(Produit produit);
+	public int supprimerProduitByName(int id_produit);
 	
 
 	/**

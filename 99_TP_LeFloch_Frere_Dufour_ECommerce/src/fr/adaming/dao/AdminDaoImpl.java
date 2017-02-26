@@ -67,11 +67,12 @@ public class AdminDaoImpl implements IAdminDao {
 	}
 
 	@Override
-	public int supprimerProduitByName(Produit produit) {
+	public int supprimerProduitByName(int id_produit) {
 
 		try {
-
-			em.remove(produit);
+			
+			Produit p=em.find(Produit.class, id_produit);
+			em.remove(p);
 			return 1;
 
 		} catch (Exception e) {

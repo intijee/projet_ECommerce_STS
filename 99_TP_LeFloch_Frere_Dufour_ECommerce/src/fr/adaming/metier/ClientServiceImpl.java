@@ -30,9 +30,9 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	@Override
-	public void selectionnerProduitByNameService(String designation_produit) {
+	public void selectionnerProduitByNameService(int id_produit) {
 		
-		clientDao.selectionnerProduitByName(designation_produit);
+		clientDao.selectionnerProduitByName(id_produit);
 	}
 
 	@Override

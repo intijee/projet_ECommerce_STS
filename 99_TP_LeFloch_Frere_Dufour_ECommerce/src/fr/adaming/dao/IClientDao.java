@@ -43,9 +43,9 @@ public interface IClientDao {
 	
 	/**
 	 * Methode pour selectionner un produit (donne true au boolean selectionner de Produit)
-	 * @param designation_produit
+	 * @param id_produit
 	 */
-	public void selectionnerProduitByName(String designation_produit);
+	public void selectionnerProduitByName(int id_produit);
 	
 
 	/**

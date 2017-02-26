@@ -53,7 +53,10 @@ public class AdminManagedBean implements Serializable {
 	private String nomCategorie = new String();
 	
 	// Recupere la liste des noms des produits
-		private List<String> listeNomProduit;
+	private List<String> listeNomProduit;
+		
+	// Recuperer la liste des produits
+	private List<Produit> listeProduit;
 		
 	// Recupère le nom d'un produit depuis la vue
 	private String nomProduit;
@@ -191,6 +194,19 @@ public class AdminManagedBean implements Serializable {
 	}
 	
 
+	/**
+	 * @return the listeProduit
+	 */
+	public List<Produit> getListeProduit() {
+		return listeProduit;
+	}
+
+	/**
+	 * @param listeProduit the listeProduit to set
+	 */
+	public void setListeProduit(List<Produit> listeProduit) {
+		this.listeProduit = listeProduit;
+	}
 
 	/**
 	 * Methode déclenché après l'instanciation d'un AdminManagedBean qui
@@ -207,6 +223,9 @@ public class AdminManagedBean implements Serializable {
 		
 		// Remplissage de la liste des noms des produits
 		this.listeNomProduit=clientService.getAllProduitNameService();
+		
+		// Remplissage de la liste des produits
+		this.listeProduit = adminService.getAllProduitService();
 	}
 
 	/**
@@ -273,8 +292,10 @@ public class AdminManagedBean implements Serializable {
 		//Rechercher un produit par son nom
 		this.produit= adminService.chercherProduitByNameService(nomProduit);
 		
+		int id=produit.getId();		
+		
 		// Si le retour est 1 alors on a supprimé le produit et on retourne sur page accueil admin
-		int verif = adminService.supprimerProduitByNameService(this.produit);
+		int verif = adminService.supprimerProduitByNameService(id);
 
 		if (verif == 1) {
 			return "succesAdmin";
@@ -292,6 +313,9 @@ public class AdminManagedBean implements Serializable {
 	 */
 	public String modifierProduit(){
 		
+		this.categorie = clientService.getCategorieByNameService(nomCategorie);
+		
+		this.produit.setpCategorie(categorie);
 		
 		// Si le retour est 1 alors on a supprimé le produit et on retourne sur page accueil admin
 		int verif = adminService.modifierProduitService(produit.getId(), this.produit);

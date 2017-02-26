@@ -35,8 +35,8 @@ public class AdminServiceImpl implements IAdminService {
 	}
 
 	@Override
-	public int supprimerProduitByNameService(Produit produit) {
-		return adminDao.supprimerProduitByName(produit);
+	public int supprimerProduitByNameService(int id_produit) {
+		return adminDao.supprimerProduitByName(id_produit);
 	}
 
 	@Override

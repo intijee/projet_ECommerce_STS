@@ -33,9 +33,9 @@ public interface IClientService {
 	
 	/**
 	 * Methode pour selectionner un produit (donne true au boolean selectionner de Produit)
-	 * @param designation_produit
+	 * @param id_produit
 	 */
-	public void selectionnerProduitByNameService(String designation_produit);
+	public void selectionnerProduitByNameService(int id_produit);
 	
 	
 	/**

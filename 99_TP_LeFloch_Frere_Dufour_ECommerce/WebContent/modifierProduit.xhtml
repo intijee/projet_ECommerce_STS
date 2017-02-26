@@ -49,7 +49,55 @@
 
 					<div class="col-xs-10" id="contenuDiv">
 						
+					<h1>Formulaire de modifiction d'un produit</h1>				
 					
+		<h:form>
+			<h:panelGrid column="3">
+
+				<h3>Id du produit</h3>
+				<p:inputText label="Id"
+					value="#{adminManagedBean.produit.id}" id="Id">
+					
+				</p:inputText>
+
+				<h3>Designation</h3>
+				<p:inputText label="Designation"
+					value="#{adminManagedBean.produit.designation}" id="designationId">
+					
+				</p:inputText>
+
+				<h3>Description</h3>
+				
+
+				<p:inputTextarea rows="5" cols="75" counter="display" maxlength="500" counterTemplate="{0} characters remaining." value="#{adminManagedBean.produit.description}" />
+   				<h:outputText id="display" />
+
+				<h3>Prix</h3>
+				<p:inputText label="Prix" value="#{adminManagedBean.produit.prix}"
+					id="prixId">
+					
+				</p:inputText>
+
+				<h3>Stock</h3>
+				<p:inputText label="Quantite"
+					value="#{adminManagedBean.produit.quantite}" id="quantiteId">
+					</p:inputText>
+
+
+				<h3>Catégorie</h3>
+
+				<p:selectOneMenu value="#{adminManagedBean.nomCategorie}" id="categorieId" >
+				<f:selectItems value="#{adminManagedBean.listeNomCategorie}" />
+  				 </p:selectOneMenu>
+					<h:message for="categorieId" />
+					
+					
+
+			</h:panelGrid>
+
+			<h:commandButton value="Modifier Produit"
+				action="#{adminManagedBean.modifierProduit}" />
+		</h:form>	
 					
 					</div>
 
