@@ -62,8 +62,7 @@ public class AdminManagedBean implements Serializable {
 	// les méthodes chercher
 	private boolean rendu;
 	
-	//récupére l'id du produit
-	private int id_produit;
+
 
 	// Constructeur vide
 	public AdminManagedBean() {
@@ -71,7 +70,6 @@ public class AdminManagedBean implements Serializable {
 		this.admin = new Admin();
 		this.produit = new Produit();
 		this.categorie = new Categorie();
-		this.id_produit= new Produit().getId();	
 	}
 
 	// Getter et setter
@@ -192,21 +190,7 @@ public class AdminManagedBean implements Serializable {
 		this.rendu = rendu;
 	}
 	
-	
-	/**
-	 * @return id_produit
-	 */
-	public int getId_produit() {
-		return id_produit;
-	}
-	
-	/**
-	 * @param id_produit
-	 *            the id_produit to set
-	 */
-	public void setId_produit(int id_produit) {
-		this.id_produit = id_produit;
-	}
+
 
 	/**
 	 * Methode déclenché après l'instanciation d'un AdminManagedBean qui
@@ -310,7 +294,7 @@ public class AdminManagedBean implements Serializable {
 		
 		
 		// Si le retour est 1 alors on a supprimé le produit et on retourne sur page accueil admin
-		int verif = adminService.modifierProduitService(this.id_produit, this.produit);
+		int verif = adminService.modifierProduitService(produit.getId(), this.produit);
 
 		if (verif == 1) {
 			return "succesAdmin";

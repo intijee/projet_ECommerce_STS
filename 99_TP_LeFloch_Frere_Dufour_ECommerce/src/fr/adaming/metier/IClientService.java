@@ -57,9 +57,9 @@ public interface IClientService {
 	/**
 	 * Methode pour chercher un produit avec un mot clé
 	 * @param motCle
-	 * @return un produit qui sera presenté au client
+	 * @return la liste des produits correspondants à ce mot clé
 	 */
-	public Produit chercherProduitMotCleService(String motCle);
+	public List<Produit> chercherProduitMotCleService(String motCle);
 	
 	
 	/**

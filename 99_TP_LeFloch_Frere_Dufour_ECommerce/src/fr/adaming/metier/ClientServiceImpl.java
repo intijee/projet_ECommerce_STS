@@ -50,7 +50,7 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 	@Override
-	public Produit chercherProduitMotCleService(String motCle) {
+	public List<Produit> chercherProduitMotCleService(String motCle) {
 		
 		return clientDao.chercherProduitMotCle(motCle);
 	}

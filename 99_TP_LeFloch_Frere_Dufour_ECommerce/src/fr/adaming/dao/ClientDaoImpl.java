@@ -145,7 +145,7 @@ public class ClientDaoImpl implements IClientDao {
 	
 
 	@Override
-	public Produit chercherProduitMotCle(String motCle) {
+	public List<Produit> chercherProduitMotCle(String motCle) {
 		
 		// Ecriture de la requete
 		String req="select p from Produit p where p.designation like ?1%";
@@ -162,7 +162,7 @@ public class ClientDaoImpl implements IClientDao {
 		
 		if (listeProd.size()!=0){
 			// On choisit de recuperer uniquement le premier produit
-			return listeProd.get(0);
+			return listeProd;
 		} else {
 			return null;
 		}

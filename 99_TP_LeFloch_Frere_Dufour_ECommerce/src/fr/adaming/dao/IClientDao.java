@@ -68,9 +68,9 @@ public interface IClientDao {
 	/**
 	 * Methode pour chercher un produit avec un mot clé
 	 * @param motCle
-	 * @return un produit qui sera presenté au client
+	 * @return la liste des produits correspondants a ce mot clé
 	 */
-	public Produit chercherProduitMotCle(String motCle);
+	public List<Produit> chercherProduitMotCle(String motCle);
 	
 	
 	/**
