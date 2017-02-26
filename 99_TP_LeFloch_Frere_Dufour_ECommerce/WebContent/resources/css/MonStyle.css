@@ -19,28 +19,37 @@
 	
 }
 
+#votrePub{
+	border: 5px solide black;
+	border-radius:10px;
+	
+}
+
 #messageDiv{
-	background-color: blue;
+	
+
 	
 	height: 100px;	
 }
 
 #contenuDiv{
-	background-color: green;
-	
-	height: 800px
-	
+	background-color: white;
+	border: 5px solid blue;
+	border-radius:10px;
+	height: 800px;
+	opacity: 0.8;
 }
 
 #menuDiv {
-	background-color: red;
-	
+	background-color: white;
+	border: 5px solid black;
+	border-radius:10px;
 	height: 800px;
-	
+	opacity: 0.8;
 }
 
 #footerDiv{
-	background-color: orange;
+	
 	
 	height: 100px;
 	
