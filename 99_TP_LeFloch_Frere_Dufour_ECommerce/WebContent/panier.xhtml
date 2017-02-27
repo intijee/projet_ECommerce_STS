@@ -62,6 +62,14 @@
 								<p:column headerText="Description">
 									<h:outputText value="#{ligne.pProduit.description}" />
 								</p:column>
+								
+								<p:column headerText="Prix">
+									<h:outputText value="#{ligne.pProduit.prix}" />
+								</p:column>
+
+								<p:column headerText="Categorie">
+									<h:outputText value="#{ligne.pProduit.pCategorie.nom}" />
+								</p:column>
 
 							</p:dataTable>
 							
