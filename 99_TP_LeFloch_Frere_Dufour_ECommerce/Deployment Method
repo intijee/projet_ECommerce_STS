@@ -1,0 +1,10 @@
+Pour Deployer l'application :
+
+1) Prendre le livrable (le fichier WAR) 
+
+2) Le coller dans le dossier de deploiement : ...\wildfly-10.0.0.Final\wildfly-10.0.0.Final\standalone\deployments
+
+3) Lancer le serveur en allant dans le dossier : ...\wildfly-10.0.0.Final\wildfly-10.0.0.Final\bin
+
+4) Demarrer le serveur en cliquant sur le fichier de commande standalone.bat
+

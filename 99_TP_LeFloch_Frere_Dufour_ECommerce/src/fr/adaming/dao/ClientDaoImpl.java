@@ -140,14 +140,14 @@ public class ClientDaoImpl implements IClientDao {
 	public List<Produit> chercherProduitMotCle(String motCle) {
 		
 		// Ecriture de la requete
-		String req="select p from Produit p where p.designation like ?1'%'";
+		String req="select p from Produit p where p.designation like ?1";
 		
 		
 		// Creation d'une requete
 		Query query=em.createQuery(req);
 		
 		// Assignation des paramètres de la requete
-		query.setParameter(1, motCle);
+		query.setParameter(1, motCle+"%");
 		
 		// Recupération des résultats (dans une liste afin de faire une vérification que la recherche n'est pas nulle)
 		List<Produit> listeProd=query.getResultList();
